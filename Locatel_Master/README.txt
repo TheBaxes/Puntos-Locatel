@@ -1,0 +1,1 @@
+Aqui se encuentran la appi para el master franquicia tanto las interfaces como las diferentes implemetaciones 
