@@ -4,8 +4,12 @@ from flask import request
 app= Flask(__name__)
 
 @app.route("/")
-def _Login_():
-    return 'Hola master'
+def MasterLogin():
+    return render_template('MasterLogin.html')
+
+@app.route("/master")
+def MasterVista():
+    return render_template('MasterVista.html')    
 
 
 
