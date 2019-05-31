@@ -6,19 +6,19 @@ app= Flask(__name__)
 @app.route("/")
 
 def _Login_():
-    return render_template('Usuario/LoginUsuario.html')
+    return render_template('LoginUsuario.html')
 
 @app.route("/puntos")
 def PuntosLocatel():
-    return  render_template('Usuario/VistaCliente.html')
+    return  render_template('VistaCliente.html')
 
 @app.route("/catalogo")
 def CatalogoUsuario():
-    return render_template('Usuario/CatalogoProductos.html')
+    return render_template('CatalogoProductos.html')
 
 @app.route("/historial")
 def HistorialCompras():
-    return render_template('Usuario/HistorialCompras.html')
+    return render_template('HistorialCompras.html')
 
 
 
