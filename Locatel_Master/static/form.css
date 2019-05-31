@@ -1,0 +1,73 @@
+/*
+ * Form stylings
+ */
+
+ input,
+ textarea,
+ select{
+   padding: 5px 0 5px 5px;
+   font-family: 'Roboto', sans-serif;
+   color: #414141;
+   background-color: #fff;
+   border-width: 1px 2px 2px 1px;
+   border-style: solid;
+   border-color: #c6c2b8 #aaa392 #aaa392 #c6c2b8;
+   transition: all 0.2s ease;
+   appearance: none;
+ }
+   input:focus,
+   textarea:focus,
+   select:focus{
+     outline: 0;
+     box-shadow: 0;
+     border-color: #414141;
+   }
+ input.validation-error {
+   border-color: #c6c2b8 #b40007 #b40007 #c6c2b8;
+ }
+ input[type="text"] {
+   max-width: 100%;
+ }
+ select {
+   position: relative;
+   line-height: 20px;
+   min-width: 115px;
+   background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAANCAYAAACpUE5eAAAABmJLR0QA/wD/AP+gvaeTAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAB3RJTUUH3QsGCAcIf0aE0QAAADFJREFUOMtjYBgFgw4wQun/ZOghKPmfUsOwKfhPiWG4FP0n1zB8Cv+TYxgh8H94pkMAEc4GBW/dMm0AAAAASUVORK5CYII=);
+   background-repeat: no-repeat;
+   background-position: right 10px;
+   padding-right: 10px;
+ }
+   select:before {
+     position: absolute;
+     right: 0;
+     z-index: 200;
+       width: 0; 
+       height: 0; 
+       border-left: 20px solid transparent;
+       border-right: 20px solid transparent;
+       border-top: 20px solid #f00;
+   }
+ input[type="button"] {
+   padding: 5px 10px;
+ }
+   input[type="button"]:hover {
+     border-color: #414141;
+   }
+   input[type="button"]:active {
+     background-color: #414141;
+     color: #F5F5F5;
+   }
+ /* 
+  * Stuff to make it a little prettier
+  */
+ html {
+   background-color: #F5F5F5;
+ }
+ body {
+   width: 700px;
+   margin: 0 auto;
+   font-family: 'Roboto', sans-serif;
+ }
+ textarea {
+   width: 500px;
+ }

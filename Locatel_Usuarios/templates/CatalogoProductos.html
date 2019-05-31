@@ -3,96 +3,85 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">    
     <title>Catalogo</title>
+    <link rel=stylesheet type=text/css href="{{ url_for('static', filename='table.css') }}">
    
 </head>
 
-<body style="margin-left: 200px; margin-right: 200px">
-    <style>
-        img{
-            width: 100px; height:100px;
-        }
-        div{
-            margin-left: 200px;
-            margin-right: 200px;
-        }
-    </style>
+<body><center>
+   
     <div >
-
-       <center> <h1>Catalogo de productos </h1></center>
-       <label for=""  >En este catalogo podras ver los productosy su valor en puntos y cuales productos puedes redimir con tus puntos disponibles.
+        <h1>Catalogo de productos </h1>
+       <label for=""  >En este catalogo podras ver los productos y su valor en puntos y cuales productos puedes redimir con tus puntos disponibles.
         </label>
     </div>
            
     
-    <div>
+    <div ></div>
         <table>
-            <tr>
-                <td>
-                  <img src="{{ url_for('static', filename='img/imagen1.png') }}" alt="" >
-                </td>
-                <td>
-                    <label for="PuntosProducto" id="" value="">1200P</label>
-                </td>
-                <td>
-                    <input type="checkbox" name="" id="" checked="checked">
-                </td>
-                <td>
-                        <img src="{{ url_for('static', filename='img/imagen2.png') }}" alt="" >
-                      </td>
-                      <td>
-                          <label for="PuntosProducto" id="" value="">1200P</label>
-                      </td>
-                      <td>
-                          <input type="checkbox" name="" id="" value="true">
-                      </td>
-            </tr>           
-
-        </table>
-    </div>
-    <div>
-                <table>
-                    <tr>
-                        <td>
-                          <img src="{{ url_for('static', filename='img/imagen3.png') }}" alt="" >
-                        </td>
-                        <td>
-                            <label for="PuntosProducto" id="" value="">1200P</label>
-                        </td>
-                        <td>
-                            <input type="checkbox" name="" id="" value="true" checked="true">
-                        </td>
-                        <td>
-                              <img src="{{ url_for('static', filename='img/imagen4.png') }}" alt="">
-                            </td>
-                            <td>
-                                <label for="PuntosProducto" id="" value="">1200P</label>
-                            </td>
-                            <td>
-                                <input type="checkbox" name="" id="" value="true">
-                            </td>
-                    </tr>           
-        
-                </table>
-            </div>
+            <th>Producto</th>
+            <th>Nombre</th>
+            <th>Puntos</th>
+            <th>Disponibilidad</th>
             
-                <div>
-                        <table>
-                            <tr>
-                                <td>
-                                  <img src="{{ url_for('static', filename='img/imagen5.png') }}" alt="">
-                                </td>
-                                <td>
-                                    <label for="PuntosProducto" id="" value="">1200P</label>
-                                </td>
-                                <td>
-                                    <input type="checkbox" name="" id="" value="true" checked="true">
-                                </td>
-                            </tr>           
+            <tr>
+            <div  class="product-wrapper" >
+                <td><img src="{{ url_for('static', filename='img/imagen1.png') }}" alt="" ></td>
+            </div>
+                <td>Abc</td>
+                <td><label for="PuntosProducto" id="" value="">1200P</label></td>
+                <td><input type="checkbox" name="" id="" checked="checked"></td>
+            
+            </tr>
+
+            <tr>    
+
+            <div  class="product-wrapper" >
+                <td> <img src="{{ url_for('static', filename='img/imagen2.png') }}" alt="" ></td>
+            </div>
+                <td>Abc</td>
+                <td><label for="PuntosProducto" id="" value="">1200P</label></td>
+                <td><input type="checkbox" name="" id="" value="true"></td>
+            </tr>
+            
+            <tr>
+                <div  class="product-wrapper" >
+                <td><img src="{{ url_for('static', filename='img/imagen3.png') }}" alt="" ></td>
+               </div>
+                    <td>Abc</td>
+                    <td><label for="PuntosProducto" id="" value="">1200P</label></td>
+                    <td><input type="checkbox" name="" id="" checked="checked"></td>
+                </tr>
                 
-                        </table>
-                    </div> 
+                <tr>    
+    
+                        <div  class="product-wrapper" >
+                                <td><img src="{{ url_for('static', filename='img/imagen4.png') }}" alt="" ></td>
+                            </div>
+                    <td>Abc</td>
+                    <td><label for="PuntosProducto" id="" value="">1200P</label></td>
+                    <td><input type="checkbox" name="" id="" value="true"></td>
+                </tr>
+
+                <tr>    
+    
+                        <div  class="product-wrapper" >
+                                <td><img src="{{ url_for('static', filename='img/imagen5.png') }}" alt="" ></td>
+                            </div>
+                        <td>Abc</td>
+                        <td><label for="PuntosProducto" id="" value="">1200P</label></td>
+                        <td><input type="checkbox" name="" id="" value="true"></td>
+                    </tr>    
+                    <div class="image-zoom">
+                            <img src='' width='100%' />
+                         </div>
+    
+                
+                               
+         </table>
+        </center>
+                     
     
 </body>
 </html>
