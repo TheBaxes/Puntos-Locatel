@@ -13,7 +13,6 @@ def login():
 
 @main.route("/", methods=['POST'])
 def login_post():
-    print(request.form)
     cedula = request.form.get('cedula')
     password = request.form.get('pass')
 
