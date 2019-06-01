@@ -1,5 +1,7 @@
 # Import flask and template operators
 from flask import Flask, render_template
+from flask_login import LoginManager
+
 
 # Import SQLAlchemy
 from flask_sqlalchemy import SQLAlchemy
@@ -13,6 +15,17 @@ app.config.from_object('config')
 # Define the database object which is imported
 # by modules and controllers
 db = SQLAlchemy(app)
+
+login_manager = LoginManager()
+login_manager.login_view = 'main.login'
+login_manager.init_app(app)
+
+from .models import Master
+
+
+@login_manager.user_loader
+def load_master(master_id):
+    return Master.query.get(int(master_id))
 
 # Sample HTTP error handling
 @app.errorhandler(404)
