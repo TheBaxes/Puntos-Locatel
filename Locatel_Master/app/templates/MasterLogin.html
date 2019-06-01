@@ -6,28 +6,37 @@
         </head>
         
         <body>
+	  {% with messages = get_flashed_messages() %}
+	  {% if messages %}
+	  <div class="notification is-danger">
+            {{ messages[0] }}
+	  </div>
+	  {% endif %}
+	  {% endwith %}
             <div class="login-wrap">
                 <div class="login-html">
                     <input id="tab-1" type="radio" name="tab" class="sign-in" checked><label for="tab-1" class="tab">Ingresar Master</label>			
                     <div class="login-form">
+		      <form method="POST" action="">
                         <div>
                             <div class="group">
-                                <label for="user" class="label">Usuario</label>
-                                <input id="user" type="text" class="input" placeholder="Usuario">
+                                <label for="cedula" class="label">Usuario</label>
+                                <input name="cedula" type="text" class="input" placeholder="Usuario">
                             </div>
                             <div class="group">
                                 <label for="pass" class="label">Contraseña</label>
-                                <input id="pass" type="password" class="input" data-type="password" placeholder="Contraseña">
+                                <input name="pass" type="password" class="input" data-type="password" placeholder="Contraseña">
                             </div>
                             <div class="group">
                                 <input type="submit" class="button" value="Ingresar">
-                                <a href="master">Ingresar</a>
-                            </div>
+                                </div>
                             <div class="hr"></div>
                         </div>
-    
+		      </form>
                     </div>
                 </div>
             </div>
+	    <a href="master">Ingresar</a>
+                            
         </body>
     </html>
