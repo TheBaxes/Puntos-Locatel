@@ -15,6 +15,7 @@
    transition: all 0.2s ease;
    appearance: none;
  }
+
    input:focus,
    textarea:focus,
    select:focus{
@@ -67,17 +68,31 @@
    width: 700px;
    margin: 0 auto;
    font-family: 'Roboto', sans-serif;
-   margin-top: 200px;
+  
  }
  textarea {
    width: 500px;
  }
 
 
- .wrap {
-    max-width: 1200px;
-    margin: 0 auto;
-}
+ .divPrimero{
+  background-color: rgba(103, 174, 255, 0.767);
+  margin-top: 100px;
+  position: relative;
+  border-radius: 30px;
+  margin-right: 100px;
+  margin-left: 100px;
+    
+ }
+ .divSegundo{
+  background-color: rgba(103, 174, 255, 0.767);
+  top: -100px;
+  position: absolute;
+  border-radius: 30px;
+  margin-right: 100px;
+  margin-left: 100px;
+  
+ }
        
   .nav {
     background: #FFF;
