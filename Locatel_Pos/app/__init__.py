@@ -46,7 +46,3 @@ app.register_blueprint(main_blueprint)
 # This will create the database file using SQLAlchemy
 db.create_all()
 #db.session.commit()
-
-print("hehe")
-#from app import initialization
-#initialization.init_db()
