@@ -9,81 +9,22 @@
 </head>
 <body>
          <center>
-        <div>
-            <h1>Punto de venta </h1>
-        </div>         
-        <div>
-            <table>
-                <tr>
-                    <td>Usuario:</td>
-                    <td><input type="text" placeholder="ID Usuario" ></td>
-                </tr>                
-            </table>
-            <td><input type="button" value="Buscar"></td>
-        </div>
-        <div>
-                <table  id= "table1">
-                        <th>Producto</th>
-                        <th>Nombre</th>
-                        <th>Puntos</th>
-                        <th>Disponibilidad</th>
-                        
-                        <tr>
-                        <div  class="product-wrapper" >
-                            <td><img src="{{ url_for('static', filename='img/imagen1.png') }}" alt="" ></td>
-                        </div>
-                            <td>Abc</td>
-                            <td><label for="PuntosProducto" id="" value="">1200P</label></td>
-                            <td><input type="checkbox" name="" id="" checked="checked"></td>
-                        
-                        </tr>
+        
+
+        <h1>Medio de Pago</h1>
+
+        <table>
+            <tr>
+                <td>
+                    <a href="/"><img src="{{ url_for('static', filename='img/efectivo.png') }}" alt=""></a>
+                </td>
             
-                        <tr>    
-            
-                        <div  class="product-wrapper" >
-                            <td> <img src="{{ url_for('static', filename='img/imagen2.png') }}" alt="" ></td>
-                        </div>
-                            <td>Abc</td>
-                            <td><label for="PuntosProducto" id="" value="">1200P</label></td>
-                            <td><input type="checkbox" name="" id="" value="true"></td>
-                        </tr>
-                        
-                         <tr>
-                            <div  class="product-wrapper" >
-                            <td><img src="{{ url_for('static', filename='img/imagen3.png') }}" alt="" ></td>
-                           </div>
-                                <td>Abc</td>
-                                <td><label for="PuntosProducto" id="" value="">1200P</label></td>
-                                <td><input type="checkbox" name="" id="" checked="checked"></td>
-                         </tr>
-                            
-                            <tr>    
-                
-                                    <div  class="product-wrapper" >
-                                            <td><img src="{{ url_for('static', filename='img/imagen4.png') }}" alt="" ></td>
-                                        </div>
-                                <td>Abc</td>
-                                <td><label for="PuntosProducto" id="" value="">1200P</label></td>
-                                <td><input type="checkbox" name="" id="" value="true"></td>
-                            </tr>
-            
-                            <tr>    
-                
-                                    <div  class="product-wrapper" >
-                                            <td><img src="{{ url_for('static', filename='img/imagen5.png') }}" alt="" ></td>
-                                        </div>
-                                    <td>Abc</td>
-                                    <td><label for="PuntosProducto" id="" value="">1200P</label></td>
-                                    <td><input type="checkbox" name="" id="" value="true"></td>
-                           
-                           </tr>                       
-                                                           
-                               
-                
-                            
-                                           
-                     </table>
-                     <input type="button" value="Comprar"> </td>
+                    <td>
+                        <a href="tarjeta"><img src="{{ url_for('static', filename='img/Tarjeta.png') }}" alt=""></a>
+                    </td>
+                </tr>
+        </table>
+        
             
     </center>
     

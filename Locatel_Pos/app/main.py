@@ -5,12 +5,19 @@ main = Blueprint('main', __name__)
 
 
 @main.route("/pos")
-def Consulta_venta_pos():
+def consulta_venta_pos():
     return render_template('VistaPos.html')
 
 @main.route("/")
-def Seleccion_pais():
+def seleccion_pais():
     return render_template('PosInicial.html')
+
+@main.route("/ventaPos")
+def venta_pos():
+    return render_template('VentaPos.html')
+@main.route("/tarjeta")
+def pago_pos():
+    return render_template('PagoTarjeta.html')
 
 @main.route("/init_db")
 def init():
