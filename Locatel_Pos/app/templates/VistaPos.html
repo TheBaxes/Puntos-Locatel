@@ -29,8 +29,8 @@
         }
 	</script>
 
-    {% for nombre in desc %}
-    {{nombre}}<br>
+    {% for nombre, precio in productos %}
+    {{nombre}}  {{ precio }}<br>
     {% endfor %}
     
     <table>

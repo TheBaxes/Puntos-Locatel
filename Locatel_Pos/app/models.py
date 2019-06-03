@@ -53,3 +53,10 @@ class Factura(db.Model):
     puntos = db.Column(db.Integer)
     tarjeta_id = db.Column(db.Integer, db.ForeignKey('tarjeta.id'))
     ubicacion_id = db.Column(db.Integer, db.ForeignKey('ubicacion.id'))
+
+class Master(db.Model):
+    __tablename__ = 'master'
+    cedula = db.Column(db.Integer, primary_key=True, autoincrement=False)
+    password = db.Column(db.String(100))
+    ubicacion_id = db.Column(db.Integer, db.ForeignKey('ubicacion.id'))
+    ubicacion = db.relationship('Ubicacion')

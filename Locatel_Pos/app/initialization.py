@@ -22,6 +22,7 @@ def init_db():
         ubicacion.productos.append(a)
     tarjeta = Tarjeta(id=1234, puntos = 0, ubicacion=ubicacion)
     usuario = Usuario(cedula=123456, nombre="Pepe", password="xdxdxd", tarjeta=tarjeta)
+    master = Master(cedula=4321, password="xdxdxd", ubicacion=ubicacion)
     for a in productos:
         db.session.add(a)
     for a in producto_precio:

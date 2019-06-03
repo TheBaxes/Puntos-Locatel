@@ -17,13 +17,20 @@ def country_required(f):
 @country_required
 def consulta_venta_pos():
     compra = [Producto_Ubicacion.query.filter_by(id=x).first() for x in request.form.getlist('compra')]
-    desc = []
+    productos = ''
+    precios = ''
     total = 0.0
     for relacion in compra:
-        desc.append(relacion.producto.nombre)
+        productos += relacion.producto.nombre + ','
+        precios += str(relacion.precio) + ','
         total += relacion.precio
+    productos = productos[:-1]
+    precios = precios[:-1]
+    session['compra.productos'] = productos
+    session['compra.precios'] = precios
+    session['compra.total'] = total
     ubicacion = Ubicacion.query.filter_by(nombre=session['country']).first()
-    return render_template('VistaPos.html', desc=desc, total=total, ubicacion=ubicacion)
+    return render_template('VistaPos.html', productos=zip(productos.split(','), precios.split(',')), total=total, ubicacion=ubicacion)
 
 @main.route("/")
 def seleccion_pais():
