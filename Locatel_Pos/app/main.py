@@ -1,7 +1,7 @@
 from functools import wraps
 from flask import Blueprint, render_template, request, session, redirect, url_for, flash
 from .initialization import init_db
-from .models import Ubicacion, Producto_Ubicacion
+from .models import Ubicacion, Producto_Ubicacion, Tarjeta
 
 main = Blueprint('main', __name__)
 
@@ -63,6 +63,18 @@ def fin_compra():
     session.pop('compra.total', None)
     return redirect(url_for('.venta_pos'))
 
+@main.route("/finCompra", methods=["POST"])
+@country_required
+@compra_required
+def pago_puntos():
+    total = float(session['compra.total'])
+    puntos_usados = request.form.get('pointsToUse')
+    tarjeta = Tarjeta.query.filter_by(id=session['tarjeta']).first()
+    session.pop('compra.productos', None)
+    session.pop('compra.precios', None)
+    session.pop('compra.total', None)
+    return redirect(url_for('.venta_pos'))
+
 @main.route("/")
 def seleccion_pais():
     return render_template('PosInicial.html')
@@ -83,9 +95,13 @@ def pago_pos():
 @country_required
 @compra_required
 def detalles_puntos():
-    cedula = request.form.get('cedula')
-    usuario = Usuario.query.filter_by(cedula=cedula).first()
-    return render_template('DetallesPuntos.html', usuario=usuario)
+    ntarjeta = request.form.get('tarjeta')
+    tarjeta = Tarjeta.query.filter_by(id=ntarjeta).first()
+    if not tarjeta:
+        flash("No se encontro el número de la tarjeta Locatel.")
+        return redirect(url_for('.consulta_venta_pos_again'))
+    session['tarjeta'] = tarjeta.id
+    return render_template('DetallesPuntos.html', total=session['compra.total'], tarjeta=tarjeta)
 
 @main.route("/init_db")
 def init():
