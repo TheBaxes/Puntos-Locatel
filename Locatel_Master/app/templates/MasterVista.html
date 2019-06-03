@@ -29,7 +29,7 @@ Master Franquicia
         <center>
           <table>
             <tr>
-              <td><H1> Master franquicia {{name}}</H1></td>                
+              <td><H1> Master franquicia {{ master.ubicacion.nombre}}</H1></td>                
             </tr>
           </table>          
           <table>
@@ -38,7 +38,7 @@ Master Franquicia
                 <label for="actualValue">Valor actual: </label>
               </td>
               <td>
-                pointsValue $0.1
+                pointsValue ${{ master.ubicacion.valor_obtencion }}
               </td>
             </tr>
             <tr>
@@ -46,22 +46,23 @@ Master Franquicia
                     <label for="buyingFunction">Valor actual: </label>
                   </td>
                   <td>
-                    Por cada dos mil en compras adquiere un punto $2000
+                    Por cada ${{ master.ubicacion.valor_redencion }} en compras adquiere un punto.
                   </td>
             </tr>
             <!------------------------>
-            <tr>
+	    <form method="POST" action="master">
+	    <tr>
               <td>Valor de los puntos ($):</td>
-              <td><input type="text" name="pointsValue"></td>
+              <td><input type="text" name="valor_obtencion" value="{{ master.ubicacion.valor_obtencion }}"></td>
             </tr>
             <!--------------------  --> 
             <tr>
               <td>Funcion de adquisicion de puntos:</td>
-              <td> <input type="text" name="acquirePoints"></td>
+              <td> <input type="text" name="valor_redencion" value="{{ master.ubicacion.valor_redencion }}"></td>
             </tr>
             <!--------------------->
           </table>
-          <div style="margin-top: 10px"><input type="button" value="Actualizar" id=""></div>
+          <div style="margin-top: 10px"><input type="submit" value="Actualizar" id=""></div>
         </center>
     </body>
 {% endblock %}

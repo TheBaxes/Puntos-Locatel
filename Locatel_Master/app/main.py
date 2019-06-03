@@ -27,10 +27,20 @@ def login_post():
     return redirect(url_for('main.vista'))
 
 
-@main.route("/master")
+@main.route("/master", methods=['GET'])
 @login_required
-def vista():
-    return render_template('MasterVista.html', name=current_user.name)
+def vista():    
+    return render_template('MasterVista.html', master=current_user)
+
+@main.route("/master", methods=['POST'])
+@login_required
+def update():
+    valor_obtencion = request.form.get('valor_obtencion')
+    valor_redencion = request.form.get('valor_redencion')
+    current_user.ubicacion.valor_obtencion = valor_obtencion
+    current_user.ubicacion.valor_redencion = valor_redencion
+    db.session.commit()
+    return redirect(url_for('main.vista'))
 
 @main.route("/logout")
 @login_required

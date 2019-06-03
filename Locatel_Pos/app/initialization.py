@@ -30,4 +30,5 @@ def init_db():
     db.session.add(ubicacion)
     db.session.add(tarjeta)
     db.session.add(usuario)
+    db.session.add(master)
     db.session.commit()
