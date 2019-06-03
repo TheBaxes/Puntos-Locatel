@@ -40,6 +40,7 @@ def update():
     current_user.ubicacion.valor_obtencion = valor_obtencion
     current_user.ubicacion.valor_redencion = valor_redencion
     db.session.commit()
+    flash('Actualizado con exito')
     return redirect(url_for('main.vista'))
 
 @main.route("/logout")

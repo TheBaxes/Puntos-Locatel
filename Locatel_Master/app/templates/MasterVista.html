@@ -38,7 +38,7 @@ Master Franquicia
                 <label for="actualValue">Valor actual: </label>
               </td>
               <td>
-                pointsValue ${{ master.ubicacion.valor_obtencion }}
+                 $  {{ master.ubicacion.valor_obtencion }} Pesos.
               </td>
             </tr>
             <tr>
@@ -46,23 +46,33 @@ Master Franquicia
                     <label for="buyingFunction">Valor actual: </label>
                   </td>
                   <td>
-                    Por cada ${{ master.ubicacion.valor_redencion }} en compras adquiere un punto.
+                    Por cada $ {{ master.ubicacion.valor_redencion }} en compras adquiere un punto.
                   </td>
             </tr>
             <!------------------------>
 	    <form method="POST" action="master">
 	    <tr>
+          <td>Funcion de adquisicion de puntos:</td>
+          <td> <input type="text" name="valor_redencion" value="{{ master.ubicacion.valor_redencion }}"></td>
+              
+      </tr>
+            <!--------------------  --> 
+            <tr>             
+
               <td>Valor de los puntos ($):</td>
               <td><input type="text" name="valor_obtencion" value="{{ master.ubicacion.valor_obtencion }}"></td>
-            </tr>
-            <!--------------------  --> 
-            <tr>
-              <td>Funcion de adquisicion de puntos:</td>
-              <td> <input type="text" name="valor_redencion" value="{{ master.ubicacion.valor_redencion }}"></td>
             </tr>
             <!--------------------->
           </table>
           <div style="margin-top: 10px"><input type="submit" value="Actualizar" id=""></div>
+               
+                      {% with messages = get_flashed_messages() %}
+                            {% if messages %}
+                            <div class="notification is-danger">
+                                  {{ messages[0] }}
+                            </div>
+                            {% endif %}
+                            {% endwith %}
         </center>
     </body>
 {% endblock %}
