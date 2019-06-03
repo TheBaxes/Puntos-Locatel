@@ -27,22 +27,22 @@ def login_post():
 
 
 @main.route("/usuario")
-#@login_required
+@login_required
 def vista():
     return render_template('VistaCliente.html')
 
 @main.route("/catalogo")
-#@login_required
+@login_required
 def catalogo():
     return render_template('CatalogoProductos.html')
 
 @main.route("/historial")
-#@login_required
+@login_required
 def historial():
     return render_template('HistorialCompras.html')
 
 @main.route("/logout")
-#@login_required
+@login_required
 def logout():
     logout_user()
     return redirect(url_for('main.login'))

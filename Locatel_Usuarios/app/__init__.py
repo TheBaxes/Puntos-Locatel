@@ -25,8 +25,8 @@ from .models import Usuario
 
 
 @login_manager.user_loader
-def load_master(master_id):
-    return Usuario.query.get(int(master_id))
+def load_master(usuario_cedula):
+    return Usuario.query.get(int(usuario_cedula))
 
 # Sample HTTP error handling
 @app.errorhandler(404)
