@@ -14,22 +14,32 @@ class Usuario(db.Model):
     __tablename__ = 'usuario'
     cedula = db.Column(db.Integer, primary_key=True, autoincrement=False)
     nombre = db.Column(db.String(100))
+    password = db.Column(db.String(100))
+    tarjeta_id = db.Column(db.Integer, db.ForeignKey('tarjeta.id'))
+    tarjeta = db.relationship("Tarjeta", backref=db.backref("usuario", uselist=False))
+
+
+class Tarjeta(db.Model):
+    __tablename__ = 'tarjeta'
+    id = db.Column(db.Integer, primary_key=True, autoincrement=False)
     puntos = db.Column(db.Integer)
     ubicacion_id = db.Column(db.Integer, db.ForeignKey('ubicacion.id'))
     ubicacion = db.relationship("Ubicacion")
+    facturas = db.relationship("Factura")
+
 
 class Producto(db.Model):
     __tablename__ = 'producto'
     id = db.Column(db.Integer, primary_key=True)
     nombre = db.Column(db.String(100))
+    imagen = db.Column(db.String(100))
 
 
 class Producto_Ubicacion(db.Model):
     __tablename__ = 'producto_ubicacion'
-    ubicacion_id = db.Column(db.Integer, db.ForeignKey('ubicacion.id'),
-                             primary_key=True)
-    producto_id = db.Column(db.Integer, db.ForeignKey('producto.id'),
-                            primary_key=True)
+    id = db.Column(db.Integer, primary_key=True)
+    ubicacion_id = db.Column(db.Integer, db.ForeignKey('ubicacion.id'))
+    producto_id = db.Column(db.Integer, db.ForeignKey('producto.id'))
     precio = db.Column(db.Float)
     producto = db.relationship("Producto")
 
@@ -41,5 +51,5 @@ class Factura(db.Model):
     valor = db.Column(db.Float)
     fecha = db.Column(db.TIMESTAMP(timezone=True))
     puntos = db.Column(db.Integer)
-    cedula_id = db.Column(db.Integer, db.ForeignKey('usuario.cedula'))
+    tarjeta_id = db.Column(db.Integer, db.ForeignKey('tarjeta.id'))
     ubicacion_id = db.Column(db.Integer, db.ForeignKey('ubicacion.id'))

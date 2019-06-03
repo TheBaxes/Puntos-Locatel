@@ -34,11 +34,11 @@ def not_found(error):
 
 # Import a module / component using its blueprint handler variable (mod_auth)
 from .main import main as main_blueprint
+from .country import country as country_blueprint
 
 # Register blueprint(s)
 app.register_blueprint(main_blueprint)
-# app.register_blueprint(xyz_module)
-# ..
+app.register_blueprint(country_blueprint)
 
 #from .models import *
 

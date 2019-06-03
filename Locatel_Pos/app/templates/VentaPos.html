@@ -7,72 +7,32 @@
     <link rel=stylesheet type=text/css href="{{ url_for('static', filename='table.css') }}">
     <title>Venta</title>
 </head>
-<center>
 <body>
-        <div>
-                <table  id= "table1">
-                        <th>Producto</th>
-                        <th>Nombre</th>
-                        <th>Puntos</th>
-                        <th>Selección</th>
-                        
-                        <tr>
-                        <div  class="product-wrapper" >
-                            <td><img src="{{ url_for('static', filename='img/imagen1.png') }}" alt="" ></td>
-                        </div>
-                            <td>Abc</td>
-                            <td><label for="PuntosProducto" id="" value="">1200P</label></td>
-                            <td><input type="checkbox" name="" ></td>
-                        
-                        </tr>
+  <center>
+    <div>
+      <form method="POST" action="pos">
+	<table  id= "table1">
+          <th>Producto</th>
+          <th>Nombre</th>
+          <th>Puntos</th>
+          <th>Selección</th>
+          {% for relacion in productos %}
+          <tr>
+            <div  class="product-wrapper" >
+              <td><img src="{{ url_for('static', filename='img/{}'.format(relacion.producto.imagen)) }}" alt="" ></td>
+            </div>
+            <td>{{ relacion.producto.nombre }}</td>
+            <td><label for="PuntosProducto" id="" value=""> {{ relacion.precio }}</label></td>
+            <td><input type="checkbox" name="compra" value="{{ relacion.id }}" ></td>
             
-                        <tr>    
-            
-                        <div  class="product-wrapper" >
-                            <td> <img src="{{ url_for('static', filename='img/imagen2.png') }}" alt="" ></td>
-                        </div>
-                            <td>Abc</td>
-                            <td><label for="PuntosProducto" id="" value="">1200P</label></td>
-                            <td><input type="checkbox" name="" ></td>
-                        </tr>
-                        
-                         <tr>
-                            <div  class="product-wrapper" >
-                            <td><img src="{{ url_for('static', filename='img/imagen3.png') }}" alt="" ></td>
-                           </div>
-                                <td>Abc</td>
-                                <td><label for="PuntosProducto" id="" value="">1200P</label></td>
-                                <td><input type="checkbox" name="" ></td>
-                         </tr>
-                            
-                            <tr>    
-                
-                                    <div  class="product-wrapper" >
-                                            <td><img src="{{ url_for('static', filename='img/imagen4.png') }}" alt="" ></td>
-                                        </div>
-                                <td>Abc</td>
-                                <td><label for="PuntosProducto" id="" value="">1200P</label></td>
-                                <td><input type="checkbox" name="" ></td>
-                            </tr>
-            
-                            <tr>    
-                
-                                    <div  class="product-wrapper" >
-                                            <td><img src="{{ url_for('static', filename='img/imagen5.png') }}" alt="" ></td>
-                                        </div>
-                                    <td>Abc</td>
-                                    <td><label for="PuntosProducto" id="" value="">1200P</label></td>
-                                    <td><input type="checkbox" name="" ></td>
-                           
-                           </tr>                
-                                                          
-                               
-                
-                            
-                                           
-                     </table>
-                     
-                    <a href="pos"> <input type="button" value="Comprar"> </td></a>
-                     </center>
+          </tr>
+
+	  {% endfor %}       
+	</table>
+	
+	<input type="submit" value="Comprar">
+      </form>
+    </div>
+  </center>
 </body>
 </html>

@@ -11,7 +11,7 @@ BASE_DIR = os.path.abspath(os.path.dirname(__file__))
 #params = urllib.parse.quote_plus(
 #    "Driver={ODBC Driver 13 for SQL Server};Server=tcp:topicossoftware.database.windows.net,1433;Database=Software;Uid=softwareadmin@topicossoftware;Pwd=pass123*;Encrypt=yes;TrustServerCertificate=no;Connection Timeout=30;")
 #SQLALCHEMY_DATABASE_URI = "mssql+pyodbc:///?odbc_connect=%s" % params
-SQLALCHEMY_DATABASE_URI = 'sqlite:///students.sqlite3'
+SQLALCHEMY_DATABASE_URI = 'sqlite:///../../students.sqlite3'
 DATABASE_CONNECT_OPTIONS = {}
 
 # Application threads. A common general assumption is
