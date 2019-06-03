@@ -5,27 +5,63 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel=stylesheet type=text/css href="{{ url_for('static', filename='table.css') }}">
-    <title>The Pos</title>
+    <title>Medio Pago</title>
 </head>
 <body>
-         <center>
-        
+    <center>
+    <h1>Medio de Pago</h1>
+    <script>
+        var points, money;
+        buying = 123445000;
+        anotherFkgVariable = 200;
+        pointValue = 0.5;
+        function calculatePoints() {
+            var variablePoints = document.getElementById('points');
+            var variableValue = document.getElementById('pointsValue');
+            points = (buying / anotherFkgVariable);
+            money = points * pointValue;
+            variablePoints.value = points;
+            variableValue.value = money;
+        }
 
-        <h1>Medio de Pago</h1>
-
-        <table>
-            <tr>
-                <td>
-                    <a href="/"><img src="{{ url_for('static', filename='img/efectivo.png') }}" alt=""></a>
-                </td>
-            
-                    <td>
-                        <a href="tarjeta"><img src="{{ url_for('static', filename='img/Tarjeta.png') }}" alt=""></a>
-                    </td>
-                </tr>
-        </table>
-        
-            
+        window.onload = function() {
+            calculatePoints();
+        }
+    </script>
+    <table>
+        <tr>
+            <td>
+                <label for="">Valor total compra :</label>
+            </td>
+            <td>
+                <input type="text" name="" id=""  value="$4000" disabled>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <label for="">Puntos que puede adquirir con esta compra :</label>
+            </td>
+            <td>
+                <input type="text" id="points" value="" disabled>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <label for="">Puntos que puede adquirir con esta compra :</label>
+            </td>
+            <td>
+                <input type="text" id="pointsValue" value="" disabled>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <a href="/"><img src="{{ url_for('static', filename='img/efectivo.png') }}" alt=""></a>
+            </td>
+            <td>
+                <a href="tarjeta"><img src="{{ url_for('static', filename='img/Tarjeta.png') }}" alt=""></a>
+            </td>
+        </tr>
+    </table> 
     </center>
     
 </body>

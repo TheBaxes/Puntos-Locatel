@@ -19,6 +19,10 @@ def venta_pos():
 def pago_pos():
     return render_template('PagoTarjeta.html')
 
+@main.route("/detalles")
+def detalles_puntos():
+    return render_template('DetallesPuntos.html')
+
 @main.route("/init_db")
 def init():
     init_db()
