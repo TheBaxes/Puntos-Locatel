@@ -20,28 +20,26 @@
 
     <div>
       <form method="POST" action="pos">
-	<table  id= "table1">
-          <th>Producto</th>
-          <th>Nombre</th>
-          <th>Puntos</th>
-          <th>Selección</th>
-          {% for relacion in productos %}
-          <tr>
-            <div  class="product-wrapper" >
-              <td><img src="{{ url_for('static', filename='img/{}'.format(relacion.producto.imagen)) }}" alt="" ></td>
-            </div>
-            <td>{{ relacion.producto.nombre }}</td>
-            <td><label for="PuntosProducto" id="" value=""> {{ relacion.precio }}</label></td>
-            <td><input type="checkbox" name="compra" value="{{ relacion.id }}" ></td>
-            
-          </tr>
-
-	  {% endfor %}       
-	</table>
-	
-	<input type="submit" value="Comprar">
-      </form>
-    </div>
+	    <table  id= "table1">
+              <th>Producto</th>
+              <th>Nombre</th>
+              <th>Precio</th>
+              <th>Selección</th>
+              {% for relacion in productos %}
+                <tr>
+                  <div  class="product-wrapper" >
+                    <td><img src="{{ url_for('static', filename='img/{}'.format(relacion.producto.imagen)) }}" alt="" ></td>
+                  </div>
+                  <td>{{ relacion.producto.nombre }}</td>
+                  <td><label for="PuntosProducto" id="" value=""> {{ relacion.precio }}</label></td>
+                  <td><input type="checkbox" name="compra" value="{{ relacion.id }}" ></td>
+                </tr>
+	            {% endfor %}       
+	    </table>
+    
+	    <input type="submit" value="Comprar">
+        </form>
+      </div>
   </center>
 </body>
 </html>

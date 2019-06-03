@@ -7,7 +7,7 @@
     <link rel=stylesheet type=text/css href="{{ url_for('static', filename='table.css') }}">
     <title>Medio Pago</title>
 </head>
-<body>
+<body>    
     <center>
     <h1>Medio de Pago</h1>
     <script>
@@ -20,7 +20,7 @@
             var variableValue = document.getElementById('pointsValue');
             points = (buying / valor_obtencion);
             money = points * pointValue;
-            variablePoints.value = points;
+            variablePoints.value = parseInt(points);
             variableValue.value = money;
         }
 
@@ -28,10 +28,6 @@
             calculatePoints();
         }
 	</script>
-
-    {% for nombre, precio in productos %}
-    {{nombre}}  {{ precio }}<br>
-    {% endfor %}
 
     {% with messages = get_flashed_messages() %}
     {% if messages %}
@@ -44,7 +40,7 @@
     <table>
         <tr>
             <td>
-                <label for="">Valor total compra :</label>
+                <label for="">Valor total compra:</label>
             </td>
             <td>
                 <input type="text" name="" id=""  value="${{ total }}" disabled>
@@ -52,7 +48,7 @@
         </tr>
         <tr>
             <td>
-                <label for="">Puntos que puede adquirir con esta compra :</label>
+                <label for="">Puntos que puede adquirir con esta compra: </label>
             </td>
             <td>
                 <input type="text" id="points" value="" disabled>
@@ -60,21 +56,38 @@
         </tr>
         <tr>
             <td>
-                <label for="">Puntos que puede adquirir con esta compra :</label>
+                <label for="">Equivalencia puntos en dinero: </label>
             </td>
             <td>
                 <input type="text" id="pointsValue" value="" disabled>
             </td>
         </tr>
+    </table> 
+
+    <table>
+        <th colspan="2"> Lista de productos seleccionados </th>
+        <tr>
+            <th>Producto</th>
+            <th>Precio</th>
+        </tr>
+        {% for nombre, precio in productos %}
+            <tr>
+                <td> <label for="">{{nombre}}</label></td>
+                <td> <label for="">{{precio}}</label> </td>
+            </tr>
+        {% endfor %}
+    </table>
+    
+    <table style="padding: 50px">
         <tr>
             <td>
-                <a href="finCompra"><img src="{{ url_for('static', filename='img/efectivo.png') }}" alt=""></a>
+                <a href="finCompra"><img src="{{ url_for('static', filename='img/efectivo.png') }}" alt="" class="center"></a>
             </td>
             <td>
-                <a href="tarjeta"><img src="{{ url_for('static', filename='img/Tarjeta.png') }}" alt=""></a>
+                <a href="tarjeta"><img src="{{ url_for('static', filename='img/Tarjeta.png') }}" alt="" class="center"></a>
             </td>
         </tr>
-    </table> 
+    </table>
 
     </center>
     
