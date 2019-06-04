@@ -1,5 +1,5 @@
 from . import db
-
+import datetime
 
 class Ubicacion(db.Model):
     __tablename__ = 'ubicacion'
@@ -7,6 +7,8 @@ class Ubicacion(db.Model):
     nombre = db.Column(db.String(100))
     valor_obtencion = db.Column(db.Float())
     valor_redencion = db.Column(db.Float())
+    codigo = db.Column(db.String(3))
+    ratio = db.Column(db.Float())
     productos = db.relationship("Producto_Ubicacion")
 
 
@@ -47,12 +49,14 @@ class Producto_Ubicacion(db.Model):
 class Factura(db.Model):
     __tablename__ = 'factura'
     id = db.Column(db.Integer, primary_key=True)
-    descripcion = db.Column(db.String(1000))
-    valor = db.Column(db.Float)
-    fecha = db.Column(db.TIMESTAMP(timezone=True))
+    productos = db.Column(db.String(1000))
+    precios = db.Column(db.String(1000))
+    total = db.Column(db.Float)
+    fecha = db.Column(db.DateTime(timezone=True), default=datetime.datetime.utcnow)
     puntos = db.Column(db.Integer)
     tarjeta_id = db.Column(db.Integer, db.ForeignKey('tarjeta.id'))
     ubicacion_id = db.Column(db.Integer, db.ForeignKey('ubicacion.id'))
+    ubicacion = db.relationship("Ubicacion")
 
 class Master(db.Model):
     __tablename__ = 'master'

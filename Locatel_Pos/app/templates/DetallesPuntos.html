@@ -9,7 +9,6 @@
 </head>
 <body>
   <center>
-    <form method="POST" action="pagoPuntos">
         <h1>Venta</h1>
         <table>
             <tr>
@@ -33,6 +32,7 @@
                     moneyMoney.innerHTML = pointsInCard * pointValue;
                 </script>
             </tr>
+	    <form method="POST" action="finCompra">
             <tr>
                 <td>Cantidad de puntos a usar</td>
                 <td> <input type="text" name="pointsToUse" id="pointsToUse"></td>
@@ -66,10 +66,10 @@
             <tr>
                 <td></td>
                 <td>
-                    <input type="button" value="Comprar" onclick="">
+                    <input type="submit" value="Comprar" onclick="">
                 </td>
             </tr>
-            
+            </form>
         </table>
     </center>
  

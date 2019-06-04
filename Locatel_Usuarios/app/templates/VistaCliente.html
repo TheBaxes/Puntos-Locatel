@@ -13,7 +13,7 @@ Usuario
     <nav class="navbar navbar-inverse navbar-fixed-top">
       <div class="container">
         <div class="navbar-header">
-          <a class="navbar-brand">{{Usuario.nombre}}</a>
+          <a class="navbar-brand">{{ user.nombre }}</a>
         </div>
         <div id="navbar" class="collapse navbar-collapse">
           <ul class="nav navbar-nav navbar-right">
@@ -35,20 +35,26 @@ Usuario
                         </tr>                        
                         <tr>
                             <td>Puntos:</td>
-                            <td> <label for="puntos" > 13 </label> </td>
-                        </tr>            
+                            <td> <label for="puntos" > {{ user.tarjeta.puntos }} </label> </td>
+                        </tr>                   
                         <tr>
+                            <td>Ubicación tarjeta:</td>
+                            <td> <label for="ubicacion" > {{ user.tarjeta.ubicacion.nombre }} </label> </td>
+                        </tr>
+			<form method="POST" action="convertir">
+			<tr>
                             <td>Conversiones:</td>
                             <td>
-                                <select name="Países">
-                                    <option value="M_Colombia">Colombia</option> 
-                                    <option value="M_Venezuela">Venezuela</option> 
-                                    <option value="M_EstadosUnidos">Estados Unidos</option>     
+                                <select name="Pais">
+                                    <option value="Colombia">Colombia({{ col }})</option> 
+                                    <option value="Venezuela">Venezuela({{ ven }})</option> 
+                                    <option value="Estados Unidos">Estados Unidos({{ usa }})</option>     
                                 </select>
                             </td>
                         </tr>
                     </table>
-                    <div style="margin-top: 10px"><input type="button" value="Convertir" id=""></div>
+                    <div style="margin-top: 10px"><input type="submit" value="Convertir" id=""></div>
+		    </form>
                 </center>
             </div>
     </body>

@@ -12,6 +12,7 @@ bootstrap = Bootstrap(app)
 
 # Configurations
 app.config.from_object('config')
+app.jinja_env.filters['zip'] = zip
 
 # Define the database object which is imported
 # by modules and controllers

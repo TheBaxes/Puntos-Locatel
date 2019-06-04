@@ -1,0 +1,25 @@
+<body>
+<table>
+                    <th>Compra</th>
+                    <th>Total</th>
+                    <th>Puntos Obtenidos</th>
+                    <th>Ubicación</th>
+		    
+		    <tr>
+		      <td>
+			<table>
+			  {% for nombre, precio in factura.productos.split(',')|zip(factura.precios.split(',')) %}
+			  <tr>
+			    <td> <label for="">{{nombre}}</label></td>
+			    <td> <label for="">{{precio}}</label> </td>
+			  </tr>
+			  {% endfor %}
+			</table
+		      </td>
+		      <td><label for="Total" id="" value=""> {{ factura.total }}</label></td>
+		      <td><label for="Puntos" id="" value=""> {{ factura.puntos }}P</label></td>
+		      <td><label for="Ubicacion" id="" value=""> {{ factura.ubicacion.nombre }}</label></td>
+		      
+		    </tr>
+                </table>
+</body>

@@ -35,11 +35,45 @@
         </nav>
 
         <body style="margin: 100px">
-            <center>
-                <div> Historial de facturas </div>
+          <center>
+	    {% if facturas %}
+                <div> <h1> Historial de facturas </h1> </div>
                 <div style="border :solid ; margin-left: 100px ; margin-right: 100px; border-radius: 20px;">
-                   <h1>Aqui va el historial</h1>
-                </div>  
+                  <table>
+                    <th>Compra</th>
+                    <th>Total</th>
+                    <th>Fecha</th>
+                    <th>Puntos Obtenidos</th>
+                    <th>Ubicación</th>
+		    
+		    {% for factura in facturas %}
+		    <tr>
+		      <td>
+			<table>
+			  {% for nombre, precio in factura.productos.split(',')|zip(factura.precios.split(',')) %}
+			  <tr>
+			    <td> <label for="">{{nombre}}</label></td>
+			    <td> <label for="">{{precio}}</label> </td>
+			  </tr>
+			  {% endfor %}
+			</table
+		      </td>
+		      <td><label for="Total" id="" value=""> {{ factura.total }}</label></td>
+		      <td><label for="Fecha" id="" value=""> {{ factura.fecha }}</label></td>
+		      <td><label for="Puntos" id="" value=""> {{ factura.puntos }}P</label></td>
+		      <td><label for="Ubicacion" id="" value=""> {{ factura.ubicacion.nombre }}</label></td>
+		      
+		    </tr>
+
+		    {% endfor %}       
+                    <div class="image-zoom">
+                        <img src='' width='100%' />
+                    </div>    
+                </table>
+                </div>
+		{% else %}
+		<h1> No hay facturas </h1>
+		{% endif %}
             </center>  
         </body>
     {% endblock %}

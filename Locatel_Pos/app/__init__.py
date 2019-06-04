@@ -11,6 +11,7 @@ app = Flask(__name__)
 
 # Configurations
 app.config.from_object('config')
+app.jinja_env.filters['zip'] = zip
 
 # Define the database object which is imported
 # by modules and controllers
@@ -45,4 +46,3 @@ app.register_blueprint(country_blueprint)
 # Build the database:
 # This will create the database file using SQLAlchemy
 db.create_all()
-#db.session.commit()

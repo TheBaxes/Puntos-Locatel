@@ -1,7 +1,8 @@
 from functools import wraps
 from flask import Blueprint, render_template, request, session, redirect, url_for, flash
 from .initialization import init_db
-from .models import Ubicacion, Producto_Ubicacion, Tarjeta
+from .models import Ubicacion, Producto_Ubicacion, Tarjeta, Factura
+from . import db
 
 main = Blueprint('main', __name__)
 
@@ -57,23 +58,39 @@ def consulta_venta_pos_again():
 
 @main.route("/finCompra")
 @country_required
+@compra_required
 def fin_compra():
+    ubicacion = Ubicacion.query.filter_by(nombre=session['country']).first()
+    factura = Factura(productos=session['compra.productos'], precios=session['compra.precios'],
+                      total=session['compra.total'], puntos=0, ubicacion=ubicacion)
     session.pop('compra.productos', None)
     session.pop('compra.precios', None)
     session.pop('compra.total', None)
-    return redirect(url_for('.venta_pos'))
+    return render_template('Factura.html', factura=factura)
 
 @main.route("/finCompra", methods=["POST"])
 @country_required
 @compra_required
 def pago_puntos():
     total = float(session['compra.total'])
-    puntos_usados = request.form.get('pointsToUse')
+    puntos_usados = int(request.form.get('pointsToUse'))
     tarjeta = Tarjeta.query.filter_by(id=session['tarjeta']).first()
+    if puntos_usados > tarjeta.puntos or puntos_usados < 0:
+        flash("Ha ingresado una cantidad erronea de puntos.")
+        return redirect(url_for('.pos'))
+    tarjeta.puntos -= puntos_usados
+    total -= puntos_usados / tarjeta.ubicacion.valor_redencion
+    nuevos_puntos = int(total / tarjeta.ubicacion.valor_obtencion)
+    tarjeta.puntos += nuevos_puntos
+    factura = Factura(productos=session['compra.productos'], precios=session['compra.precios'],
+                      total=total, puntos=nuevos_puntos, ubicacion=tarjeta.ubicacion)
+    tarjeta.facturas.append(factura)
+    db.session.add(factura)
+    db.session.commit()
     session.pop('compra.productos', None)
     session.pop('compra.precios', None)
     session.pop('compra.total', None)
-    return redirect(url_for('.venta_pos'))
+    return render_template('Factura.html', factura=factura)
 
 @main.route("/")
 def seleccion_pais():
@@ -102,6 +119,13 @@ def detalles_puntos():
         return redirect(url_for('.consulta_venta_pos_again'))
     session['tarjeta'] = tarjeta.id
     ubicacion = Ubicacion.query.filter_by(nombre=session['country']).first()
+    if tarjeta.ubicacion != ubicacion:
+        ratio = tarjeta.ubicacion.ratio / ubicacion.ratio
+        dinero = tarjeta.puntos * tarjeta.ubicacion.valor_obtencion
+        dinero = dinero / ratio
+        tarjeta.puntos = int(dinero / ubicacion.valor_obtencion)
+        tarjeta.ubicacion = ubicacion
+        db.session.commit()
     return render_template('DetallesPuntos.html', total=session['compra.total'], tarjeta=tarjeta, ubicacion=ubicacion)
 
 @main.route("/init_db")
