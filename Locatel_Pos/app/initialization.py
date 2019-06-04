@@ -21,9 +21,17 @@ def init_db():
                   Producto_Ubicacion(precio=105000000.0),
                   Producto_Ubicacion(precio=52000000.0),
     ]
+    precio_usa = [Producto_Ubicacion(precio=1.0),
+                  Producto_Ubicacion(precio=2.0),
+                  Producto_Ubicacion(precio=15.0),
+                  Producto_Ubicacion(precio=7.3),
+                  Producto_Ubicacion(precio=3.2),
+    ]
     for a, b in zip(precio_colombia, productos):
         a.producto = b
     for a, b in zip(precio_ven, productos):
+        a.producto = b
+    for a, b in zip(precio_usa, productos):
         a.producto = b
     colombia = Ubicacion(nombre="Colombia", valor_obtencion=200.0, valor_redencion=0.5, codigo="COP", ratio=3000.0)
     for a in precio_colombia:
@@ -32,6 +40,8 @@ def init_db():
     for a in precio_ven:
         ven.productos.append(a)
     usa = Ubicacion(nombre="Estados Unidos", valor_obtencion=0.1, valor_redencion=0.01, codigo="USA", ratio=1.0)
+    for a in precio_usa:
+        usa.productos.append(a)
     tarjeta = Tarjeta(id=1234, puntos=200, ubicacion=colombia)
     usuario = Usuario(cedula=123456, nombre="Pepe", password="xdxdxd", tarjeta=tarjeta)
     master_co = Master(cedula=4321, password="xdxdxd", ubicacion=colombia)
@@ -42,6 +52,8 @@ def init_db():
     for a in precio_colombia:
         db.session.add(a)
     for a in precio_ven:
+        db.session.add(a)
+    for a in precio_usa:
         db.session.add(a)
     db.session.add(colombia)
     db.session.add(ven)
