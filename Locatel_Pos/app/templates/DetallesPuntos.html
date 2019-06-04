@@ -40,9 +40,12 @@
                 <script>
                     pointValue = {{ ubicacion.valor_redencion }};
                     pointsInCard = {{ tarjeta.puntos }};
+                    valorObt= {{ubicacion.valor_obtencion}};
+                    
                     total = {{ total }};
                     pointsToUse.oninput = function() {
                         pointsValue = pointsToUse.value;
+                       
                         if(pointsInCard < pointsValue) {
                             errorMsg.innerHTML = "Usted no tiene puntos suficientes para esta compra :("
                             result.innerHTML = "";
@@ -52,7 +55,9 @@
                             errorMsg.innerHTML = "Equivalencia de sus puntos en dinero:"
                             helper = pointsValue * pointValue;
                             result.innerHTML = helper;
-                            document.getElementById('sustract').innerHTML = total - helper;
+                            helper2 = total - helper;
+                            document.getElementById('sustract').innerHTML = helper2;                            
+                            document.getElementById('puntosCompra').innerHTML = parseInt(helper2/valorObt);
                         }
                     };
                 </script>                
@@ -62,6 +67,9 @@
                 <td>
                     <label for="">Total a pagar: $</label> <span id="sustract"></span>
                 </td>
+                <td>
+                    <label for="">Puntos Obtenidos por esta compra:</label> <span id="puntosCompra"></span>
+                </td>
             </tr>
             <tr>
                 <td></td>
@@ -70,7 +78,7 @@
                 </td>
             </tr>
             </form>
-        </table>
+ñ        </table>
     </center>
  
 </body>
