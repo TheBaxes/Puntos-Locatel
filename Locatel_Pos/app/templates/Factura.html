@@ -4,7 +4,8 @@
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<meta http-equiv="X-UA-Compatible" content="ie=edge">
-	<title>Document</title>
+	<link rel=stylesheet type=text/css href="{{ url_for('static', filename='table.css') }}">
+	<title>Factura</title>
 </head>
 
 	<body>
@@ -12,26 +13,37 @@
 
 		<table>
 				<th>Compra</th>
-				<th>Total</th>
-				<th>Puntos Obtenidos</th>
-				<th>Ubicación</th>
+				<th>Precio</th>
+				
+			
+        <tr>
+					<td>
+            {% for nombre, precio in factura.productos.split(',')|zip(factura.precios.split(',')) %}
+           <tr>
+           <td> <label for="">{{nombre}}</label></td>
+          <td> <label for="">${{precio}}</label> </td>
+        </tr> 
+           {% endfor %}
 
-<tr>
-<td>
-<table>
 
-   {% for nombre, precio in factura.productos.split(',')|zip(factura.precios.split(',')) %}
-<tr>
-<td> <label for="">{{nombre}}</label></td>
-<td> <label for="">{{precio}}</label> </td>
-</tr>
-{% endfor %}
-</table>
-<td><label for="Total" id="" value=""> {{ factura.total }}</label></td>
-<td><label for="Puntos" id="" value=""> {{ factura.puntos }}P</label></td>
-<td><label for="Ubicacion" id="" value=""> {{ factura.ubicacion.nombre }}</label></td>
 
 </tr>
+		</table>
+		<table>
+				<th>Ubicación</th>						
+				<th>Total compra</th>
+				<th>Puntos Obtenidos</th>	
+
+				<tr> 
+					<td><label for="Ubicacion" id="" value=""> {{ factura.ubicacion.nombre }}</label></td> 
+				   <td><label for="Total" id="" value=""> ${{ factura.total }}</label></td>
+           <td><label for="Puntos" id="" value=""> {{ factura.puntos }}P</label></td>
+             
+			 </tr>
+			 <tr>
+				 <td><a href="ventaPos"><input type="button" value="Finalizar" ></a></td>
+			 </tr>
+				
 		</table>
 	</center>
 	
