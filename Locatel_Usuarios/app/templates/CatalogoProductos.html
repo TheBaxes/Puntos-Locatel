@@ -42,26 +42,24 @@
                     <label for=""  >En este catalogo podras ver los productos y su valor en puntos y cuales productos puedes redimir con tus puntos disponibles. </label>
                 </div>
                 <div></div>
-                <table>
-                    <th>Producto</th>
-                    <th>Nombre</th>
-                    <th>Puntos</th>
-                    <th>Disponibilidad</th>
+                <table style="width: 70%">
+                  <th>Producto</th>
+                  <th>Nombre</th>
+                  <th>Puntos</th>
+                  <th>Disponibilidad</th>
 		    
-		    {% for relacion in productos %}
-		    <tr>
-		      <div  class="product-wrapper" >
-			<td><img src="{{ url_for('static', filename='img/{}'.format(relacion.producto.imagen)) }}" alt="" ></td>
-		      </div>
-		      <td>{{ relacion.producto.nombre }}</td>
-		      <td><label for="PuntosProducto" id="" value=""> {{ (relacion.precio/valor_redencion) | int}}P</label></td>
-		      
-		    </tr>
-
-		    {% endfor %}       
-                    <div class="image-zoom">
-                        <img src='' width='100%' />
-                    </div>    
+		              {% for relacion in productos %}
+		                <tr>
+		                  <div  class="product-wrapper" >
+			                  <td><img src="{{ url_for('static', filename='img/{}'.format(relacion.producto.imagen)) }}" alt="" ></td>
+		                  </div>
+		                  <td>{{ relacion.producto.nombre }}</td>
+		                  <td>{{ (relacion.precio/valor_redencion) | int}} P </td>
+		                </tr>
+		              {% endfor %}       
+                  <div class="image-zoom">
+                      <img src='' width='100%' />
+                  </div>    
                 </table>
             </center>
         </body>
