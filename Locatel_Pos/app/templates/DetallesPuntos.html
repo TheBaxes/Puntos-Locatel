@@ -3,24 +3,71 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" >
+    <link rel=stylesheet type=text/css href="{{ url_for('static', filename='table.css') }}">
+    <title>Venta Final</title>
 </head>
 <body>
   <center>
     <form method="POST" action="pagoPuntos">
+        <h1>Venta</h1>
         <table>
             <tr>
                 <td>Valor venta</td>
                 <td><label for="toCharge">{{ total }}</label></td>
+                <td>Máximo de puntos que pueden ser usados en esta compra: <label for="" id="maxPoints"></label></td>
+                <script>
+                    obtain = {{ ubicacion.valor_redencion }};
+                    total = {{ total }};
+                    maximPoints = parseInt(total / obtain);
+                    maxPoints.innerHTML = maximPoints;
+                </script>
             </tr>
             <tr>
                 <td>Nro puntos </td>
                 <td> <label for="nOfPoints">{{ tarjeta.puntos }}</label></td>
+                <td>Equivalencia de puntos en dinero: $<label for="" id="moneyMoney"></label> </td>
+                <script>
+                    pointsInCard = {{ tarjeta.puntos }};
+                    pointValue = {{ ubicacion.valor_redencion }};
+                    moneyMoney.innerHTML = pointsInCard * pointValue;
+                </script>
             </tr>
             <tr>
                 <td>Cantidad de puntos a usar</td>
-                <td> <input type="text" name="pointsToUse" id=""></td>
+                <td> <input type="text" name="pointsToUse" id="pointsToUse"></td>
+                <td> <label id="errorMsg" for="">Equivalencia de sus puntos en dinero:</label> <span id="result"></span></td>
+                <script>
+                    pointValue = {{ ubicacion.valor_redencion }};
+                    pointsInCard = {{ tarjeta.puntos }};
+                    total = {{ total }};
+                    pointsToUse.oninput = function() {
+                        pointsValue = pointsToUse.value;
+                        if(pointsInCard < pointsValue) {
+                            errorMsg.innerHTML = "Usted no tiene puntos suficientes para esta compra :("
+                            result.innerHTML = "";
+                            document.getElementById('sustract').innerHTML = total;
+                        } else {
+                            document.getElementById('errorMsg').style.visibility = "visible";
+                            errorMsg.innerHTML = "Equivalencia de sus puntos en dinero:"
+                            helper = pointsValue * pointValue;
+                            result.innerHTML = helper;
+                            document.getElementById('sustract').innerHTML = total - helper;
+                        }
+                    };
+                </script>                
+            </tr>
+            <tr>
+                <td></td>
+                <td>
+                    <label for="">Total a pagar: $</label> <span id="sustract"></span>
+                </td>
+            </tr>
+            <tr>
+                <td></td>
+                <td>
+                    <input type="button" value="Comprar" onclick="">
+                </td>
             </tr>
             
         </table>

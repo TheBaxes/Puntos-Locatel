@@ -101,7 +101,8 @@ def detalles_puntos():
         flash("No se encontro el número de la tarjeta Locatel.")
         return redirect(url_for('.consulta_venta_pos_again'))
     session['tarjeta'] = tarjeta.id
-    return render_template('DetallesPuntos.html', total=session['compra.total'], tarjeta=tarjeta)
+    ubicacion = Ubicacion.query.filter_by(nombre=session['country']).first()
+    return render_template('DetallesPuntos.html', total=session['compra.total'], tarjeta=tarjeta, ubicacion=ubicacion)
 
 @main.route("/init_db")
 def init():

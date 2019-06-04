@@ -17,10 +17,10 @@ def init_db():
     ]
     for a, b in zip(producto_precio, productos):
         a.producto = b
-    ubicacion = Ubicacion(nombre="colombia", valor_obtencion=200.0, valor_redencion=0.5)
+    ubicacion = Ubicacion(nombre="colombia", valor_obtencion=200.0, valor_redencion=1)
     for a in producto_precio:
         ubicacion.productos.append(a)
-    tarjeta = Tarjeta(id=1234, puntos = 0, ubicacion=ubicacion)
+    tarjeta = Tarjeta(id=1234, puntos = 200, ubicacion=ubicacion)
     usuario = Usuario(cedula=123456, nombre="Pepe", password="xdxdxd", tarjeta=tarjeta)
     master = Master(cedula=4321, password="xdxdxd", ubicacion=ubicacion)
     for a in productos:

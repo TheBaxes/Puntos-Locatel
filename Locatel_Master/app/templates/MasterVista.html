@@ -38,7 +38,7 @@ Master Franquicia
                 <label for="actualValue">Valor actual: </label>
               </td>
               <td>
-                 $  {{ master.ubicacion.valor_obtencion }} Pesos.
+                 $  {{ master.ubicacion.valor_redencion }} Pesos.
               </td>
             </tr>
             <tr>
@@ -46,21 +46,21 @@ Master Franquicia
                     <label for="buyingFunction">Valor actual: </label>
                   </td>
                   <td>
-                    Por cada $ {{ master.ubicacion.valor_redencion }} en compras adquiere un punto.
+                    Por cada $ {{ master.ubicacion.valor_obtencion }} en compras adquiere un punto.
                   </td>
             </tr>
             <!------------------------>
 	    <form method="POST" action="master">
 	    <tr>
           <td>Funcion de adquisicion de puntos:</td>
-          <td> <input type="text" name="valor_redencion" value="{{ master.ubicacion.valor_redencion }}"></td>
+          <td> <input type="text" name="valor_obtencion" value="{{ master.ubicacion.valor_obtencion }}"></td>
               
       </tr>
             <!--------------------  --> 
             <tr>             
 
               <td>Valor de los puntos ($):</td>
-              <td><input type="text" name="valor_obtencion" value="{{ master.ubicacion.valor_obtencion }}"></td>
+              <td><input type="text" name="valor_redencion" value="{{ master.ubicacion.valor_redencion }}"></td>
             </tr>
             <!--------------------->
           </table>
